@@ -1,0 +1,36 @@
+<div class="card card-block">
+  <h4 class="card-title">Create Joke</h4>
+  <div class="form-group">
+    <input type="text"
+           class="form-control"
+           placeholder="Enter the setup"
+           [(ngModel)]="newJoke.setup">
+  </div>
+  <div class="form-group">
+    <input type="text"
+           class="form-control"
+           placeholder="Enter the punchline"
+           [(ngModel)]="newJoke.punchline">
+  </div>
+  <button type="button"
+          class="btn btn-primary"
+          (click)="addJoke()">Create
+  </button>
+</div>
+  <section class="main" *ngIf="jokes.length > 0">
+ <li *ngFor="let joke of jokes">
+<div class="card card-block">
+  <h4 class="card-title">
+  	{{joke.setup}}
+  </h4>
+  <p class="card-text"
+     [hidden]="joke.hide">{{joke.punchline}}</p>
+  <a (click)="joke.toggle()"
+     class="btn btn-warning">Hide
+  </a>
+  <a (click)="removeJoke(joke)"
+     class="btn btn-danger">Delete
+  </a>  
+</div>
+</li>
+</section>
